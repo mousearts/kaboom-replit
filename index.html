@@ -23,17 +23,19 @@
 </head>
 
 <body>
-<script src="https://kaboomjs.com/lib/0.1.0/kaboom.js"></script>
+<script src="https://kaboomjs.com/lib/0.5.0/kaboom.js"></script>
+<script src="https://kaboomjs.com/lib/0.5.0/plugins/aseprite.js"></script>
+<script src="https://kaboomjs.com/lib/0.5.0/plugins/pedit.js"></script>
+<script src="https://kaboomjs.com/pub/legacy/kbmsprite.js"></script>
 
   <script>
-kaboom.global();
 
-init({
-  width: 240,
-  height: 240,
-  fullscreen: true,
-  scale: 2,
+kaboom({
+  ...{"fullscreen":true,"width":240,"height":240,"scale":2,"startScene":"main","debug":true,"clearColor":null,"version":"0.5.0"},
+  global: true,
+  plugins: [ peditPlugin, asepritePlugin, kbmspritePlugin ],
 });
+loadKbmsprite("grass", "sprites/grass.kbmsprite");
 scene("main", (args = {}) => {
 add([
   text('oh hi mark!'),
